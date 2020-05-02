@@ -401,3 +401,32 @@
 //
 //  }
 //}
+
+
+// listener
+//...
+//
+//List<Post> posts = ...; // your list of contents.
+//
+//...
+//
+//
+//child: ListView.builder(
+//itemBuilder: (BuildContext context, int index) {
+//var post = posts[index];
+//
+//return ListTile(
+//title: Text(post.title),
+//subtitle: Text('My new post'),
+//onTap: () => onTapped(post),
+//);
+//},
+//itemCount: posts.length,
+//),
+//
+//
+//...
+//
+//void onTapped(Post post) {
+//// navigate to the next screen.
+//}

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ui/reg-page.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -94,25 +95,31 @@ class _TravellerViewState extends State<TravellerView> {
                         ),
                       ),
 
-                      SizedBox(width: 10 * SizeConfig.widthMultiplier,),
+                      SizedBox(width: 6 * SizeConfig.widthMultiplier,),
 
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Name", style: TextStyle(
+                          Text("FirstName "+"LastName", style: TextStyle(
                             color: Colors.white,
                             fontSize: 3 * SizeConfig.textMultiplier,
                             fontWeight: FontWeight.bold
                           )),
 
-                          //SizedBox(height: 1 * SizeConfig.heightMultiplier,),
+                          SizedBox(height: 1 * SizeConfig.heightMultiplier,),
+
+                          Text("Country", style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 1.5 * SizeConfig.textMultiplier,
+                            //fontWeight: FontWeight.bold
+                          )),
 
                         ],
                       )
                     ],
                   ),
 
-                  SizedBox(height: 1 * SizeConfig.heightMultiplier,),
+                  SizedBox(height: 2 * SizeConfig.heightMultiplier,),
 
                   Container(
                     decoration: BoxDecoration(
@@ -151,7 +158,7 @@ class _TravellerViewState extends State<TravellerView> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 2 * SizeConfig.heightMultiplier),
-                      child: Text("My Places",
+                      child: Text("Popular Places in Sri Lanka",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -193,13 +200,13 @@ class _TravellerViewState extends State<TravellerView> {
                               ),
                             ),
                             Spacer(),
-                            Text(
-                                "View All",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 1.7 * SizeConfig.textMultiplier,
-                                )
-                            )
+//                            Text(
+//                                "View All",
+//                                style: TextStyle(
+//                                  color: Colors.grey,
+//                                  fontSize: 1.7 * SizeConfig.textMultiplier,
+//                                )
+//                            )
                           ],
                         )
                     ),
@@ -236,9 +243,17 @@ class _TravellerViewState extends State<TravellerView> {
       children: <Widget>[
         Row(
           children: <Widget>[
-            _myAlbumSingleCardView("assets/images/view.png", "Hey"),
+            GestureDetector(
+              child: _myAlbumSingleCardView("assets/images/view.png", "Hey"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                );
+              },
+            ),
             Spacer(),
-            _myAlbumSingleCardView("assets/images/view.png", "Fuck u"),
+            _myAlbumSingleCardView("assets/images/view.png", "Hi"),
           ],
         ),
 
@@ -248,7 +263,7 @@ class _TravellerViewState extends State<TravellerView> {
           children: <Widget>[
             _myAlbumSingleCardView("assets/images/view.png", "Hey"),
             Spacer(),
-            _myAlbumSingleCardView("assets/images/view.png", "Fuck u"),
+            _myAlbumSingleCardView("assets/images/view.png", "Hi"),
           ],
         ),
 
@@ -258,7 +273,7 @@ class _TravellerViewState extends State<TravellerView> {
           children: <Widget>[
             _myAlbumSingleCardView("assets/images/view.png", "Hey"),
             Spacer(),
-            _myAlbumSingleCardView("assets/images/view.png", "Fuck u"),
+            _myAlbumSingleCardView("assets/images/view.png", "Hi"),
           ],
         ),
       ],
@@ -266,31 +281,61 @@ class _TravellerViewState extends State<TravellerView> {
   }
 
   _favouriteCard(String s) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 40.0),
+    return GestureDetector(
+      child:Padding(
+          padding: const EdgeInsets.only(left: 40.0),
 //      child: ClipRRect(
 //          borderRadius: BorderRadius.circular(15.0),
 //          child: Image.asset(s, height: 20 * SizeConfig.heightMultiplier, width: 70 * SizeConfig.widthMultiplier, fit: BoxFit.cover,)
 //      )
-      child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-              border: Border.all(color: Colors.grey, width: 0.4)
-          ),
-          child: Column(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.asset(s, height: 20 * SizeConfig.heightMultiplier, width: 70 * SizeConfig.widthMultiplier, fit: BoxFit.cover,)
+          child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20.0),
+                  border: Border.all(color: Colors.grey, width: 0.4)
               ),
-              Text(
-                  "Hey"
+              child: Column(
+                children: <Widget>[
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.asset(s, height: 20 * SizeConfig.heightMultiplier, width: 70 * SizeConfig.widthMultiplier, fit: BoxFit.cover,)
+                  ),
+                  Text(
+                      "Hey"
+                  )
+                ],
               )
-            ],
           )
-      )
+      ),
+      onTap: () {
+        print('Hi');
+      },
     );
+//    return Padding(
+//      padding: const EdgeInsets.only(left: 40.0),
+////      child: ClipRRect(
+////          borderRadius: BorderRadius.circular(15.0),
+////          child: Image.asset(s, height: 20 * SizeConfig.heightMultiplier, width: 70 * SizeConfig.widthMultiplier, fit: BoxFit.cover,)
+////      )
+//      child: Container(
+//          decoration: BoxDecoration(
+//              color: Colors.white,
+//              borderRadius: BorderRadius.circular(20.0),
+//              border: Border.all(color: Colors.grey, width: 0.4)
+//          ),
+//          child: Column(
+//            children: <Widget>[
+//              ClipRRect(
+//                borderRadius: BorderRadius.circular(15.0),
+//                child: Image.asset(s, height: 20 * SizeConfig.heightMultiplier, width: 70 * SizeConfig.widthMultiplier, fit: BoxFit.cover,)
+//              ),
+//              Text(
+//                  "Hey"
+//              )
+//            ],
+//          )
+//      )
+//    );
 
   }
 
@@ -307,11 +352,11 @@ class _TravellerViewState extends State<TravellerView> {
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(asset, height: 40 * SizeConfig.imageSizeMultiplier, width: 32 * SizeConfig.imageSizeMultiplier, fit: BoxFit.cover),
             ),
-            Text(
-                text
+            Text(text),
+            Container(
             )
           ],
-        )
+        ),
     );
   }
 }

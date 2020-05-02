@@ -7,5 +7,8 @@ import 'package:ui/traveller-view-page.dart';
 void main() {
   runApp(MaterialApp(
     home: TravellerView(),
+    //home: RegisterPage(),
+    //home: FavSelectionPage()
+
   ));
 }
