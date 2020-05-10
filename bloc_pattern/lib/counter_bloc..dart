@@ -42,13 +42,12 @@ import 'counter_state.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   @override
-  // TODO: implement initialState
   CounterState get initialState => CounterState.initial();
 
   @override
   Stream<CounterState> mapEventToState(
-      CounterEvent event,
       CounterState currentState,
+      CounterEvent event,
   ) async* {
     //CounterState currentState;
     if(event is IncrementEvent) {
